@@ -50,9 +50,8 @@ for row in range (sheet1.min_row, sheet1.max_row):
 
         summ_mes = ((int(znachenie2)+int(znachenie4)+int (znachenie6)+int (znachenie8))/4) #средняя поедаемость в контейнере за месяц
         vsego_mes1 += summ_mes
-        vsego_mes = round(vsego_mes1 / 245, 2)
+        vsego_mes = round(vsego_mes1 / 245, 2) # средняя поедаемость за месяц по обьекту
         if summ_mes > 0:
-            print(int(znachenie1), summ_mes)
             sheet_new.append([int(znachenie1), summ_mes])
 
 sheet_new.append(["средняя поедаемость за месяц = ", vsego_mes, "%"] )
@@ -68,46 +67,81 @@ def count_dr1 (sheet_namber):
            for a in i:
                if a == 'ДР':
                    DRIII+=1
-               # if a == "Мышь":
-               #     print((i[2]),i[6])
-               #     mish+=1
+               if a == "Мышь":
+                   m = ((i[2]),i[6])
+                   for s in m:
+                       if s == None:
+                           s = str("a") # неважно какая буква она ниже уберется главное не цифра
+                       for t in s:
+                           if  t.isdigit():
+                               mish += int(t)
+    return  DRIII,mish
+book1_DR_mishi= count_dr1(2) +count_dr1(3)+count_dr1(1)+count_dr1(4)+count_dr1(5)
+book1_DR = (sum(book1_DR_mishi[:: 2]))
+book1_mishi = (sum(book1_DR_mishi[1::2]))
 
-    return  DRIII#,mish
-#book1_DR_mishi= count_dr1(1)+count_dr1(2)+count_dr1(3)+count_dr1(4)+count_dr1(5)
-# book1_DR = (sum(book1_DR_mishi[:: 2]))
-# book1_mishi = (sum(book1_DR_mishi[1::2]))
-
-# print(f"всего ДР по 3 барьеру {book1_DR} \nвсего мышей по третьему барьеру {book1_mishi}")
-
-
-sheet1dr = (count_dr1(1)+count_dr1(2)+count_dr1(3)+count_dr1(4)+count_dr1(5))
 def count_dr2 (sheet_namber):
     DRIII = 0
-    sheet2 = book2.worksheets[sheet_namber].values
-    for i in sheet2:
-        for a in i:
-            if a == 'ДР':
-                DRIII += 1
-    return DRIII
-sheet2dr = (count_dr2(1)+count_dr2(2)+count_dr2(3)+count_dr2(4)+count_dr2(5))
-def count_dr3(sheet_namber):
+    mish = 0
+    sheet1 = book2.worksheets[sheet_namber].values
+    for i in sheet1:
+           for a in i:
+               if a == 'ДР':
+                   DRIII+=1
+               if a == "Мышь":
+                   m = ((i[2]),i[6])
+                   for s in m:
+                       if s == None:
+                           s = str("a") # неважно какая буква она ниже уберется главное не цифра
+                       for t in s:
+                           if  t.isdigit():
+                               mish += int(t)
+    return  DRIII,mish
+book2_DR_mishi= count_dr2(2) +count_dr2(3)+count_dr2(1)+count_dr2(4)+count_dr2(5)
+book2_DR = (sum(book2_DR_mishi[:: 2]))
+book2_mishi = (sum(book2_DR_mishi[1::2]))
+
+def count_dr3 (sheet_namber):
     DRIII = 0
-    sheet3 = book3.worksheets[sheet_namber].values
-    for i in sheet3:
-        for a in i:
-            if a == 'ДР':
-                DRIII += 1
-    return DRIII
-sheet3dr = (count_dr3(1)  + count_dr3(2) + count_dr3(3) + count_dr3(4) + count_dr3(5))
-def count_dr4(sheet_namber):
+    mish = 0
+    sheet1 = book3.worksheets[sheet_namber].values
+    for i in sheet1:
+           for a in i:
+               if a == 'ДР':
+                   DRIII+=1
+               if a == "Мышь":
+                   m = ((i[2]),i[6])
+                   for s in m:
+                       if s == None:
+                           s = str("a") # неважно какая буква она ниже уберется главное не цифра
+                       for t in s:
+                           if  t.isdigit():
+                               mish += int(t)
+    return  DRIII,mish
+book3_DR_mishi= count_dr3(2) +count_dr3(3)+count_dr3(1)+count_dr3(4)+count_dr3(5)
+book3_DR = (sum(book3_DR_mishi[:: 2]))
+book3_mishi = (sum(book3_DR_mishi[1::2]))
+def count_dr4 (sheet_namber):
     DRIII = 0
-    sheet4 = book4.worksheets[sheet_namber].values
-    for i in sheet4:
-        for a in i:
-            if a == 'ДР':
-                DRIII += 1
-    return DRIII
-sheet4dr = (count_dr4(1)  + count_dr4(2) + count_dr4(3) + count_dr4(4) + count_dr4(5))
-sheet_new.append(["всего ДР по третьему барьеруб" ,sheet1dr+sheet2dr+sheet3dr+sheet4dr])
+    mish = 0
+    sheet1 = book4.worksheets[sheet_namber].values
+    for i in sheet1:
+           for a in i:
+               if a == 'ДР':
+                   DRIII+=1
+               if a == "Мышь":
+                   m = ((i[2]),i[6])
+                   for s in m:
+                       if s == None:
+                           s = str("a") # неважно какая буква она ниже уберется главное не цифра
+                       for t in s:
+                           if  t.isdigit():
+                               mish += int(t)
+    return  DRIII,mish
+book4_DR_mishi= count_dr4(2) +count_dr4(3)+count_dr4(1)+count_dr4(4)+count_dr4(5)
+book4_DR = (sum(book4_DR_mishi[:: 2]))
+book4_mishi = (sum(book4_DR_mishi[1::2]))
+sheet_new.append(["всего ДР по третьему барьеру", book1_DR+book2_DR+book3_DR+book4_DR])
+sheet_new.append(["всего мышей по третьему барьеру", book1_mishi+book2_mishi+book3_mishi+book4_mishi])
 book.save ("АДМ запись сюда.xlsx")
 book.close ()
